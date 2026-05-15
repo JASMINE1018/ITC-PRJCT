@@ -14,55 +14,73 @@
 <body>
 
     <!-- Navigation -->
+    <header>
     <nav class="navbar">
-        <div class="icon">
-            <img src="robot(logo).sv" alt="Icon IT Club">
+        <div class="nav-left">
+            <a href="#home" class="brand">
+                <img src="assets/img/robot(logo).svg" alt="Icon IT Club" class="brand-icon">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#division" class="nav-link">Divisions</a></li>
+                <li><a href="#project" class="nav-link">Project</a></li>
+            </ul>
         </div>
-        <ul class="nav-menu">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#division" class="nav-link">Divisions</a></li>
-            <li><a href="#project" class="nav-link">Project</a></li>
-        </ul>
-        <button class="btn-join">Join Us!</button>
+
+        <a href="#join" class="btn-join">Join Us!</a>
     </nav>
 
     <!-- Home Section -->
     <section id="home">
-        <div class="home-left">
-            <div class="home-text">
-                <h1>
-                    Empowering <br>
-                    the Next <br>
-                    Tech <br>
-                    Generation
-                </h1>
+        <div class="hero">
+            <div class="hero-left">
+                <div class="hero-text">
+                    <h1>
+                        Empowering<br>
+                        the Next<br>
+                        Tech<br>
+                        Generation
+                    </h1>
 
-                <p>
-                Build your future with technology and innovation.
-                </p>
+                    <p>
+                        Build your future with technology and innovation.
+                    </p>
 
-                <button class="main-join">Join Us!</button>
+                    <a href="#join" class="main-join">JOIN US</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-panel">
+                    <div class="dots-grid" aria-hidden="true"></div>
+                    <img class="hero-robot" src="assets/img/robot-header.svg" alt="Robot illustration">
+                    <div class="background-hero"></div>
+                </div>
             </div>
         </div>
-
-        <div class="dots"></div>
-
-        <img class="robot" src="robot-header.sv">
     </section>
+    </header>
 
     <!-- About Section -->
     <section id="about">
-        <div class="about">
-            <h1>ABOUT US!</h1>
-            <p>"A community where logic meets creativity.
-                 Dive into the world of Programming 
-                 and Graphic Design."
-            </p>
+        <div class="about-hero">
+            <img src="assets/img/pixel 1(ladder).svg" alt="decor" class="about-pixel left">
+            <img src="assets/img/pixel 2(ladder-flip).svg" alt="decor" class="about-pixel right">
 
-            <a href="#">Divisions</a>
+            <div class="about-content">
+                <h1>ABOUT US!</h1>
+                <p>
+                    "A community where logic meets creativity.<br>
+                    Dive into the world of <span class="highlight">Programming</span> and <span class="highlight">Graphic Design</span>."
+                </p>
+            </div>
 
-            <a href="#">Projects</a>
+            <div class="about-actions">
+                <a href="#division" class="btn-outline">Divisions</a>
+                <a href="#project" class="btn-outline">Project</a>
+            </div>
         </div>
     </section>
 
@@ -174,6 +192,6 @@
             </div>
         </div>
     </section>
-
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
