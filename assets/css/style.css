@@ -153,21 +153,49 @@ body {
 }
 
 @media (max-width: 560px) {
+    /* Keep desktop-style navbar (no hamburger). Allow wrapping and smaller gaps. */
     .nav-menu {
-        display: none;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+
+    .brand-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .navbar {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .btn-join {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
 
 /* Hero / Home styles */
 #home {
-    padding: 48px 20px 80px;
+    /* padding: 48px 20px 80px; */
+}
+#home {
+    padding: 32px 20px 40px;
 }
 
 /* Decorative right-side background (non-sticky). This uses an absolute pseudo-element
    inside #home so it reaches the viewport's right edge but scrolls with the page. */
 #home {
     position: relative;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 #home::before {
@@ -178,7 +206,7 @@ body {
     bottom: 0;
     width: var(--panel-w);
     max-width: 700px;
-    background: var(--warna-sekunder);
+    /* background: var(--warna-sekunder); */
     border-radius: 12px 0 0 12px;
     z-index: 2;
     pointer-events: none;
@@ -197,7 +225,7 @@ body {
 /* Make hero area the same vertical span as the blue background inside #home
    (accounting for #home vertical padding: 48px top + 80px bottom = 128px) */
 .hero {
-    min-height: calc(100vh - 128px);
+    min-height: calc(100vh - 96px);
 }
 
 .hero-left {
@@ -257,7 +285,7 @@ body {
     position: relative;
     width: 48vw;
     max-width: 700px;
-    background: var(--warna-sekunder);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -271,19 +299,22 @@ body {
     right: 24px;
     top: 50%;
     transform: translateY(-50%);
-    width: 220px;
+    width: 260px;
     height: 260px;
-    background-image: radial-gradient(#ffffff 4px, rgba(255, 255, 255, 0) 5px);
-    background-size: 32px 32px;
+    background-image: url('../img/dot-header.svg');
+    background-repeat: repeat;
+    background-size: contain;
     opacity: 1;
+    pointer-events: none;
 }
 
 .hero-robot {
-    width: 820px;
-    transform: rotate(-18deg);
+    width: 620px;
+    transform: translateY(-50%) rotate(-18deg);
     position: absolute;
     z-index: 3;
-    left: -200px;
+    left: -140px;
+    top: 50%;
 }
 
 @media (max-width: 980px) {
@@ -292,8 +323,10 @@ body {
     }
 
     .hero-robot {
-        width: 400px;
+        width: 420px;
         left: -60px;
+        transform: translateY(-50%) rotate(-18deg);
+        top: 50%;
     }
 }
 
@@ -301,9 +334,6 @@ body {
     .hero {
         flex-direction: column;
         gap: 24px;
-    }
-
-    .hero {
         min-height: auto;
     }
 
@@ -321,18 +351,49 @@ body {
         max-width: none;
         height: auto;
         min-height: 220px;
-        padding-left: 40px;
+        padding-left: 12px;
         border-radius: 6px;
     }
 
     .hero {
         padding-right: 0;
+        margin: 0 auto;
+        padding-left: 12px;
+        padding-right: 12px;
+        max-width: 720px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
+    /* On responsive, hide robot and dots and center hero content */
     .hero-robot {
-        width: 280px;
-        transform: rotate(-10deg);
-        left: -40px;
+        display: none;
+    }
+
+    .hero-panel .dots-grid {
+        display: none;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero-text h1,
+    .hero-text p {
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .main-join {
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
     }
 
     .hero-text h1 {
@@ -341,6 +402,84 @@ body {
 
     .main-join {
         padding: 12px 28px;
+    }
+
+    /* Pull About section closer on tablets/phones */
+    .hero {
+        padding-bottom: 0;
+        min-height: auto;
+    }
+
+    .about-hero {
+        margin-top: -40px;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    /* Small phones: hide robot and dotted background, reduce spacing */
+    .hero-text h1 {
+        font-size: 32px;
+        line-height: 1.05;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    .hero-robot {
+        display: none;
+    }
+
+    .hero-panel .dots-grid {
+        display: none;
+    }
+
+    /* Reduce vertical spacing so About sits closer to Join */
+    #home {
+        padding: 24px 12px 24px;
+    }
+
+    .hero {
+        padding-bottom: 12px;
+    }
+
+    .hero-left {
+        justify-content: flex-start;
+        gap: 18px;
+    }
+
+    .main-join {
+        margin-top: 8px;
+    }
+
+    /* Slightly pull About up on small phones (less than tablets) */
+    .about-hero {
+        margin-top: -20px;
+        padding: 32px 16px;
+    }
+
+    /* Make layout full-bleed on phones: remove side paddings, rounding and max-widths */
+    html, body, #home {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        background: var(--warna-utama);
+    }
+
+    .hero-panel, .about-hero, .projects, .division-container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .navbar {
+        border-radius: 0;
     }
 }
 
@@ -354,7 +493,7 @@ body {
     color: #fff;
     position: relative;
     overflow: hidden;
-    padding: 90px;
+    padding: 60px;
     border-radius: 0 0 0 0;
 }
 
@@ -457,22 +596,27 @@ body {
 .division-badge {
     background: var(--warna-utama);
     color: var(--warna-aksen);
-    padding: 0.4rem 1rem;
-    border-radius: 10px;
+    padding: 0.5rem 1.1rem;
+    border-radius: 18px;
     font-weight: 700;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     font-family: 'Space Mono', monospace;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .count {
-    padding: 4px 6px;
+    padding: 6px 10px;
     font-size: 1.1rem;
     background-color: var(--warna-sekunder);
-    border-radius: 10px;
+    border-radius: 999px;
     color: var(--warna-utama);
     font-weight: 900;
+    min-width: 42px;
+    text-align: center;
 }
 
 .division-title {
@@ -599,6 +743,45 @@ body {
     image-rendering: pixelated;
 }
 
+/* Robot walk-jump-walk loop (applies on all sizes) */
+.division-right {
+    overflow: visible; /* allow robot to move outside its container */
+    position: relative;
+}
+
+.division-hero {
+    width: 140px;
+    will-change: transform;
+    position: relative;
+    left: 0;
+    animation: robotLoop 4200ms ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes robotLoop {
+    0% {
+        transform: translateX(0) translateY(0) scaleX(1);
+    }
+    18% {
+        transform: translateX(-140%) translateY(0) scaleX(-1); /* walk left */
+    }
+    32% {
+        transform: translateX(-140%) translateY(-22%) scaleX(-1); /* jump up */
+    }
+    40% {
+        transform: translateX(-110%) translateY(0) scaleX(-1); /* land */
+    }
+    60% {
+        transform: translateX(-30%) translateY(0) scaleX(1); /* walk right (part) */
+    }
+    85% {
+        transform: translateX(0) translateY(0) scaleX(1); /* return to start */
+    }
+    100% {
+        transform: translateX(0) translateY(0) scaleX(1);
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .division-content {
@@ -608,7 +791,13 @@ body {
         order: -1;
     }
     .division-hero {
-        width: 130px;
+        width: 120px;
+    }
+}
+
+@media (max-width: 560px) {
+    .division-hero {
+        width: 88px;
     }
 }
 
@@ -616,7 +805,9 @@ body {
 #project {
     position: relative;
     overflow: hidden;
-    min-height: 700px;
+    min-height: auto;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .bg-project {
@@ -638,16 +829,17 @@ body {
     text-align: center;
     font-size: 36px;
     color: #FFFFFF;
-    margin: 0;
-    padding-top: 48px;
-    margin-bottom: 24px;
+    margin: 0 0 12px 0;
+    padding-top: 16px;
+    padding-bottom: 8px;
 }
 
 /* Scroll Horizontal Project */
 .project-container {
     display: grid;
     place-items: center;
-    height: 85vh;
+    height: auto;
+    padding: 12px 8px 24px;
     box-sizing: border-box;
 }
 
@@ -751,6 +943,19 @@ body {
     display: flex;
     justify-content: center;
     padding: 30px 60px;
+}
+
+/* Fade-in helper (used with IntersectionObserver) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms cubic-bezier(.2,.9,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1);
+    will-change: opacity, transform;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: none;
 }
 
 .footer-location {
